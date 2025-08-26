@@ -19,10 +19,27 @@ let myserver = myhttp.createServer(
     } else {
       mytext = "I don't know you!";
     }
+    
+    let mysecondtext;
+    if  (mytext === "Well hello there folks...") {
+      mysecondtext = "Make yourself at home";
+    } else {
+        mysecondtext = "Let's get to know each other";
+      }
+    
+      let myjoke;
+    if ( myrequest.url === "/french") {
+      mytext = "Bonjour, bienvenue mon amis";
+    } else if ( myrequest.url === "/joke") 
+    {
+      myjoke = "How do trees go online?.....They Log on";
+    }
+    
+  
     // writeHead() creates an http response header, including the status code (200 OK), the content type
     myresponse.writeHead( 200, { "Content-Type": "text/plain" } );
 
-    myresponse.end( mytext + "\n");
+    myresponse.end( mytext + "\n" + mysecondtext + "\n" + myjoke);
   }
 );
 
